@@ -21,5 +21,6 @@
   - Creating .env file in the root directory
   - Add environment-specific variables on new lines in the form of NAME=VALUE
   - Usage 'require('dotenv').config();'
+  - Usage in js file: process.env.NAME
 
-4. 
+4. Installation mysql module: 'npm install mysql'
