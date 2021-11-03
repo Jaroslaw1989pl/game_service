@@ -1,13 +1,25 @@
 1. Creating folder tree:
 
-  src
+  root
   |
   |__controllers
   |__models
   |__routes
   |__views
 
-2. Iintialization github repository: 
-  'git init'
+2. Iintialization github repository: 'git init'
+  
+  - Creating .gitignore file in the root directory
+  - Creating remote repository
+  - Commit the files staged in local repository: 'git commit -m "your message"'
+  - Add the remote repository URL to where local content is pushed: 
+    'git remote add origin "https://github.com/Jaroslaw1989pl/game_service.git"'
+  - Push the code in local repository to GitHub: 'git push -u origin master'
 
-3
+3. Installation Dotenv module that loads environment variables from a .env file into process.env:
+  'npm install dotenv'
+  - Creating .env file in the root directory
+  - Add environment-specific variables on new lines in the form of NAME=VALUE
+  - Usage 'require('dotenv').config();'
+
+4. 
