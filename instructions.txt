@@ -20,7 +20,11 @@
   'npm install dotenv'
   - Creating .env file in the root directory
   - Add environment-specific variables on new lines in the form of NAME=VALUE
-  - Usage 'require('dotenv').config();'
+  - Impotring module on top of js file 'require('dotenv').config();'
   - Usage in js file: process.env.NAME
 
-4. Installation mysql module: 'npm install mysql'
+4. Installation of mysql module: 'npm install mysql'
+
+5. Installation of Express framework: 'npm install express'
+
+6. Installation of Embedded JavaScript templates: 'npm install ejs'

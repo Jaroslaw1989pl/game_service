@@ -1,25 +1,35 @@
-const http = require('http');
-const fs   = require('fs');
-require('dotenv').config();
+const express = require('express');
+const dotenv  = require('dotenv');
 
 const port = process.env.PORT || 3001;
 
-// creating HTTP server
-const httpServer = http.createServer((request, responce) => {
+// express app
+const app = express();
+// setting the path to environment variables
+dotenv.config({path: './.env'});
 
-  if(request.url === '/') {
-    fs.readFile('views/home.html', (error, data) => {
-      if(error) {
-        console.log(error);
-      } else {
-        responce.writeHead(200, {'Content-Type': 'text/html'});
-        responce.write(data);
-        responce.end();
-      }
-    });
-  }
 
+// parse url-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({extended: false}));
+// parse a json bodies (as sent by API clients)
+app.use(express.json());
+// register view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+
+// listen for requests
+app.listen(3000, () => {
+  console.log(`Server running at port ${port}`);
 });
-httpServer.listen(port, () => {
-  console.log(`HTTP server running at port ${port}`);
+
+
+// define routes
+app.get('/', (req, res) => {
+  res.render('./home', {port: port});
+});
+
+// 404 page
+app.use((req, res) => {
+  res.status(404).render('./404');
 });
