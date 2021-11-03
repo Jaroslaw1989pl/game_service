@@ -1,0 +1,13 @@
+1. Creating folder tree:
+
+  src
+  |
+  |__controllers
+  |__models
+  |__routes
+  |__views
+
+2. Iintialization github repository: 
+  'git init'
+
+3
