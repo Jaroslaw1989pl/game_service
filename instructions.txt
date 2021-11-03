@@ -7,7 +7,7 @@
   |__routes
   |__views
 
-2. Iintialization github repository: 'git init'
+2. Iintialization github repository in the root directory: 'git init'
   
   - Creating .gitignore file in the root directory
   - Creating remote repository
