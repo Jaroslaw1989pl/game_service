@@ -1,37 +1,61 @@
 const http = require('http');
 const fs = require('fs');
-const dotenv  = require('dotenv');//.config({path: './.env'});
+const dotenv  = require('dotenv').config({path: './.env'});
 
 
 const port = process.env.PORT || 3001;
 
 const httpServer = http.createServer((request, response) => {
+  
+  let filePath = 'views/';
+  let headers;
+  console.log(request.url);
+  switch (request.url) {
+    case '/':
+      filePath += 'home.html';
+      headers = {'Content-Type': 'text/html'};
+      break;
+    case '/registration':
+      filePath += 'registration.html';
+      headers = {'Content-Type': 'text/html'};
+      break;
+    case '/login':
+      filePath += 'login.html';
+      headers = {'Content-Type': 'text/html'};
+      break;
+    case '/favicon.ico':
+      filePath = 'assets/puzzle.png';
+      headers = {'Content-Type': 'image/png'};
+      break;
+    case '/styles/home.css':
+      filePath += 'styles/home.css';
+      headers = {'Content-Type': 'text/css'};
+      break;
+    default: 
+      filePath += '404.html';
+      headers = {'Content-Type': 'text/html'};
+      break;
+  }
+  // if (request.url === '/') {
+  //   filePath += 'home.html';
+  // } else if(request.url === '/register') {
+  //   filePath += 'registration.html';
+  // } else if(request.url === '/login') {
+  //   filePath += 'login.html';
+  // } else {
+  //   filePath += '404.html';
+  // }
+  
+  fs.readFile(filePath, (error, data) => {
+    if(error) {
+      console.log(error);
+    }
+    response.writeHead(200, headers);
+    response.write(data);
+    response.end();
+  });
 
 });
 httpServer.listen(port, () => {
   console.log(`HTTP server listen on ${port}...`);
 });
-// // parse url-encoded bodies (as sent by HTML forms)
-// app.use(express.urlencoded({extended: false}));
-// // parse a json bodies (as sent by API clients)
-// app.use(express.json());
-// // register view engine
-// app.set('view engine', 'ejs');
-// app.set('views', './views');
-
-
-// // listen for requests
-// app.listen(3000, () => {
-//   console.log(`Server running at port ${port}`);
-// });
-
-
-// // define routes
-// app.get('/', (req, res, next) => {
-//   res.render('./home', {port: port});
-// });
-
-// // 404 page
-// app.use((req, res, next) => {
-//   res.status(404).render('./404');
-// });
