@@ -2,29 +2,37 @@
 
   root
   |
-  |__controllers
-  |__models
-  |__routes
-  |__views
+  |__CONTROLLERS
+  |__MODELS
+  |__ROUTES
+  |__VIEWS
+  |__.gitignore
+  |__.env
 
-2. Iintialization github repository in the root directory: 'git init'
+2. Initialization of the npm module in the root directory: 'npm init'
+
+3. Iintialization of the github repository in the root directory: 'git init'
   
-  - Creating .gitignore file in the root directory
+  - Creating '.gitignore' file in the root directory
   - Creating remote repository
+  - Adding (all) files content to the index: 'git add (--all)'
   - Commit the files staged in local repository: 'git commit -m "your message"'
   - Add the remote repository URL to where local content is pushed: 
     'git remote add origin "https://github.com/Jaroslaw1989pl/game_service.git"'
   - Push the code in local repository to GitHub: 'git push -u origin master'
 
-3. Installation Dotenv module that loads environment variables from a .env file into process.env:
-  'npm install dotenv'
-  - Creating .env file in the root directory
+4. Installation of Dotenv module that loads environment variables from a .env file 
+   into process.env: 'npm install dotenv'
+  - Creating '.env' file in the root directory
   - Add environment-specific variables on new lines in the form of NAME=VALUE
   - Impotring module on top of js file 'require('dotenv').config();'
   - Usage in js file: process.env.NAME
 
-4. Installation of mysql module: 'npm install mysql'
+5. Installation of the mysql module: 'npm install mysql'
 
-5. Installation of Express framework: 'npm install express'
+6. Optional: Installing the nodemon module to automatically restart the application after 
+   making changes to the files: 'npm install -g nodemon'
 
-6. Installation of Embedded JavaScript templates: 'npm install ejs'
+7. Optional: Installation of the Express framework: 'npm install express'
+
+8. Optional: Installation of the Embedded JavaScript templates: 'npm install ejs'
