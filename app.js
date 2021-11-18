@@ -36,15 +36,6 @@ const httpServer = http.createServer((request, response) => {
       headers = {'Content-Type': 'text/html'};
       break;
   }
-  // if (request.url === '/') {
-  //   filePath += 'home.html';
-  // } else if(request.url === '/register') {
-  //   filePath += 'registration.html';
-  // } else if(request.url === '/login') {
-  //   filePath += 'login.html';
-  // } else {
-  //   filePath += '404.html';
-  // }
   
   fs.readFile(filePath, (error, data) => {
     if(error) {
@@ -57,5 +48,5 @@ const httpServer = http.createServer((request, response) => {
 
 });
 httpServer.listen(port, () => {
-  console.log(`HTTP server listen on ${port}...`);
+  console.log(`HTTP server listen on port: ${port}`);
 });

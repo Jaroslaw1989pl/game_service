@@ -11,7 +11,22 @@
 </head>
 <body>
   <h1 id="title">HOME PAGE</h1>
-  <a href="http://localhost:3000/login"><button>Sing in</button></a>
-  <a href="http://localhost:3000/registration"><button>Sing up</button></a>
+  <button id="login-btn">Sing in</button>
+  <button id="registration-btn">Sing up</button>
+  
+  <script>
+    
+    const loginBtn = document.getElementById("login-btn");
+    const registrationBtn = document.getElementById("registration-btn");
+
+    loginBtn.addEventListener('click', () => {
+      window.location.pathname = '/login';
+    });
+    registrationBtn.addEventListener('click', () => {
+      window.location.pathname = '/registration';
+    });
+
+  </script>
+
 </body>
 </html>
