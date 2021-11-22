@@ -7,12 +7,12 @@
                                          Forward request to 
                                        appropriate controller
                                                  |
-                                                 V
- __________         ________                _____________
-|_ _ _ _ _ |       |        |  read/write  |             |
-| Database | <---> | Models | <----------> | Controllers | -----> HTTP Response (HTML)
-|__________|       |________|     data     |_____________|
-                                                 ^
+  ________                                       V
+ /________\         ________                _____________
+|\________/|       |        |  read/write  |             |
+|\Database/| <---> | Models | <----------> | Controllers | -----> HTTP Response (HTML)
+|\________/|       |________|     data     |_____________|
+ \________/                                      ^
                                                  |
                                             _____________
                                            |    Views    |
