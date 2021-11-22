@@ -7,6 +7,7 @@ const router = require('./routes/router');
 const port = process.env.PORT || 3001;
 
 const httpServer = http.createServer((request, response) => {
+  console.log(request.url);
   router(request, response);
 });
 httpServer.listen(port, () => {

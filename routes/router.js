@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const renderHTML = (path, statusCode, headers, response) => {
-  
   fs.readFile(path, (error, data) => {
     if(error) {
       console.log(error);
@@ -11,13 +10,12 @@ const renderHTML = (path, statusCode, headers, response) => {
     response.write(data);
     response.end();
   });
-
 };
 
 const router = (request, response) => {
   
-  const filePath = request.url;
   const fileExtension = path.extname(request.url).toLowerCase();
+  
   const mimeTypes = {
     '': 'text/html',
     '.html': 'text/html',
@@ -25,6 +23,7 @@ const router = (request, response) => {
     '.css': 'text/css',
     '.json': 'application/json',
     '.png': 'image/png',
+    '.ico': 'image/png',
     '.jpg': 'image/jpg',
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
@@ -38,22 +37,23 @@ const router = (request, response) => {
   };
 
   const contentType = mimeTypes[fileExtension] || 'application/octet-stream';
-
+  
   if(request.url === '/') {
-    renderHTML('./public/views' + filePath + 'home.html', 200, {'Content-type': 'text/html'}, response);
-  } else if(request.url === 'login.html') {
-    renderHTML('./public/views' + filePath, 200, {'Content-type': contentType}, response);
-  } else if(request.url === 'registration.html') {
-    renderHTML('./public/views' + filePath, 200, {'Content-type': contentType}, response);
-  } else if(request.url === 'styles/home.css') {
-    console.log(request.url, contentType);
-    renderHTML('./public/' + filePath, 200, {'Content-type': contentType}, response);
-  } else if(request.url === 'scripts/home-paths.js') {
-    renderHTML('./public/' + filePath, 200, {'Content-type': contentType}, response);
+    renderHTML('public/views/home.html', 200, {'Content-type': contentType}, response);
+  } else if(request.url === '/login') {
+    renderHTML('public/views/login.html', 200, {'Content-type': contentType}, response);
+  } else if(request.url === '/registration') {
+    renderHTML('public/views/registration.html', 200, {'Content-type': contentType}, response);
+  } else if(request.url === '/styles/home.css') {
+    renderHTML('public/' + request.url, 200, {'Content-type': contentType}, response);
+  } else if(request.url === '/scripts/home-paths.js') {
+    renderHTML('public/' + request.url, 200, {'Content-type': contentType}, response);
+  } else if(request.url === '/favicon.ico') {
+    renderHTML('assets/favicon.png', 200, {'Content-type': contentType}, response);
   } else {
-    renderHTML('./public/views/404.html', 404, {'Content-type': 'text/html'}, response);
+    renderHTML('public/views/404.html', 404, {'Content-type': contentType}, response);
   }
-
+  
 };
 
 module.exports = router;
