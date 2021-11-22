@@ -1,11 +1,37 @@
+                                MVC model
+                                              ________
+                                             |        |
+                                             | Routes | <----- HTTP Request
+                                             |________|
+                                                 |
+                                         Forward request to 
+                                       appropriate controller
+                                                 |
+                                                 V
+ __________         ________                _____________
+|_ _ _ _ _ |       |        |  read/write  |             |
+| Database | <---> | Models | <----------> | Controllers | -----> HTTP Response (HTML)
+|__________|       |________|     data     |_____________|
+                                                 ^
+                                                 |
+                                            _____________
+                                           |    Views    |
+                                           | (templates) |
+                                           |_____________|
+
+
 1. Creating folder tree:
 
   root
   |
+  |__ASSETS
   |__CONTROLLERS
   |__MODELS
+  |__PUBLIC
+  |   |__SCRIPTS
+  |   |__STYLES
+  |   |__VIEWS
   |__ROUTES
-  |__VIEWS
   |__.gitignore
   |__.env
 
@@ -30,8 +56,8 @@
 
 5. Installation of the mysql module: 'npm install mysql'
 
-6. Optional: Installing the nodemon module to automatically restart the application after 
-   making changes to the files: 'npm install -g nodemon'
+6. Optional: Installing the nodemon module to automatically restart the application 
+   after making changes to the files: 'npm install -g nodemon'
 
 7. Optional: Installation of the Express framework: 'npm install express'
 

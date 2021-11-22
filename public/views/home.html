@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game service | Home</title>
 
+  <!-- STYLES -->
   <link rel="stylesheet" href="styles/home.css">
+  <!-- SCRIPTS -->
+  <script src="scripts/home-paths.js" defer></script>
 
 </head>
 <body>
+
   <h1 id="title">HOME PAGE</h1>
   <button id="login-btn">Sing in</button>
   <button id="registration-btn">Sing up</button>
-  
-  <script>
-    
-    const loginBtn = document.getElementById("login-btn");
-    const registrationBtn = document.getElementById("registration-btn");
-
-    loginBtn.addEventListener('click', () => {
-      window.location.pathname = '/login';
-    });
-    registrationBtn.addEventListener('click', () => {
-      window.location.pathname = '/registration';
-    });
-
-  </script>
 
 </body>
 </html>
