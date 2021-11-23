@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Game service | Registration</title>
+
+  <!-- STYLES -->
+  
+  <!-- SCRIPTS -->
+  <script src="scripts/registration-validation.js" defer></script>
+
 </head>
 <body>
+
   <h1>REGISTRATION PAGE</h1>
+
+  <form name="registration-form" action="/user-authentication/registration" method="POST">
+      
+    <!-- User name input -->
+    <label for="user-name">User name</label><br>
+    <input type="text" id="user-name" value="" name="userName" class="registration-input">
+    <p id="user-name-error" style="color: red;"></p>
+    <br>
+    <!-- User email input -->
+    <label for="user-email">Email</label><br>
+    <input type="text" id="user-email" value="" name="userEmail" class="registration-input">
+    <p id="user-email-error" style="color: red;"></p>
+    <br>
+    <!-- User password input -->
+    <label for="user-pass">Password</label><br>
+    <input type="text" id="user-pass" value="" name="userPass" class="registration-input">
+    <p id="user-pass-error" style="color: red;"></p>
+    <br>
+    <!-- User password input -->  
+    <label for="user-rep-pass">Repeat password</label><br>
+    <input type="text" id="user-rep-pass" name="userRepPass" class="registration-input">
+    <p id="user-pass2-error" style="color: red;"></p>
+    <br>
+    <!-- privacy policy accept button -->
+    <input type="checkbox" id="privacy-policy" name="privacyPolicy" class="registration-input">
+    <label for="privacy-policy"> Zapoznałem(-am) sie i akceptuję </label>
+    <a href="regulamin.html" target="-blank">regulamin</a>
+    <div style="clear: both;"></div>
+    <br>
+    <input type="submit" id="form-submit-btn" name="formSubmitBtn" value="Utwórz konto" >
+
+  </form>
+
 </body>
 </html>
