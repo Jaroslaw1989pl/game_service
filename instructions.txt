@@ -24,10 +24,10 @@
 
   root
   |
-  |__ASSETS
   |__CONTROLLERS
   |__MODELS
   |__PUBLIC
+  |   |__ASSETS
   |   |__SCRIPTS
   |   |__STYLES
   |   |__VIEWS
