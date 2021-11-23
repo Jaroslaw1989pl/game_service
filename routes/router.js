@@ -51,16 +51,12 @@ const router = (request, response) => {
   const statusCode = 200;
   const headers = setHeaders(link);
   
-  const static = link.substr(1, link.indexOf('/', 1) - 1);
+  const static = link.substring(1, link.indexOf('/', 1));
   
   // serving static files
-  if(static === 'styles') {
+  if(static === 'styles' || static === 'scripts' || static === 'assets') {
     renderHTML('public' + link, statusCode, headers, response);
-  } else if(static === 'scripts') {
-    renderHTML('public' + link, statusCode, headers, response);
-  } else if(static === 'assets') {
-    renderHTML('public' + link, statusCode, headers, response);
-  } 
+  }
   // serving HTML files and HTTP request methods
   else if(request.url === '/') {
     renderHTML('public/views/home.html', statusCode, headers, response);
