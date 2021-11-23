@@ -51,20 +51,20 @@ const router = (request, response) => {
   const statusCode = 200;
   const headers = setHeaders(link);
   
-  const static = link.substring(1, link.indexOf('/', 1));
+  const static = link.split('/')[1];
   
   // serving static files
   if(static === 'styles' || static === 'scripts' || static === 'assets') {
     renderHTML('public' + link, statusCode, headers, response);
   }
   // serving HTML files and HTTP request methods
-  else if(request.url === '/') {
+  else if(link === '/') {
     renderHTML('public/views/home.html', statusCode, headers, response);
-  } else if(request.url === '/login') {
-    renderHTML('public/views/login.html', statusCode, headers, response);
-  } else if(request.url === '/registration') {
-    renderHTML('public/views/registration.html', statusCode, headers, response);
-  } else if(request.url === '/favicon.ico') {
+  } else if(link === '/login') {
+    renderHTML('public/views' + link + '.html', statusCode, headers, response);
+  } else if(link === '/registration') {
+    renderHTML('public/views' + link + '.html', statusCode, headers, response);
+  } else if(link === '/favicon.ico') {
     renderHTML('public/assets/favicon.png', statusCode, headers, response);
   } else {
     renderHTML('public/views/404.html', 404, headers, response);
