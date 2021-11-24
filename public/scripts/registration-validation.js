@@ -122,7 +122,7 @@ const passValidation = () => {
     areLettersValid = false;
   }
   // number and symbol validation
-  if(/(?=.*[0-9?=.*[!@#$%^&*()\-_=+<>?])/.test(userPassInput.value)) {
+  if(/(?=.*([\x21-\x40]|[\x5B-\x60]|[\x7B-\x7E]))/.test(userPassInput.value)) {
     passSymbols.style.color = 'green';
     areSymbolsValid = true;
   } else {
