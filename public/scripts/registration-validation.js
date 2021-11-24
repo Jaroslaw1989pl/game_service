@@ -43,7 +43,7 @@ userNameInput.addEventListener('input', nameValidation);
 
 
 // USER EMAIL VALIDATION
-const emailRegex = /^([\w-]+\.{0,1})+[\w-]+@([\w-]+\.)+[\w-]{2,4}$/i;
+const emailRegex = /^([\w]+[.|-]{0,1}[\w]+)+@([\w]+-{0,1}[\w]+\.)+[a-zA-Z]+$/i;
 const userEmailInput = document.getElementById('user-email');
 const userEmailParagraph = document.getElementById('user-email-error');
 
