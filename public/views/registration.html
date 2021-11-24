@@ -9,46 +9,53 @@
   <title>Game service | Registration</title>
 
   <!-- STYLES -->
-  
+  <link rel="stylesheet" href="styles/registration.css">
   <!-- SCRIPTS -->
   <script src="scripts/registration-validation.js" defer></script>
 
 </head>
 <body>
 
-  <h1>REGISTRATION PAGE</h1>
-
-  <form name="registration-form" action="/user-authentication/registration" method="POST">
+  <div id="registration-form">
+    <header>
+      <h1>Create an account</h1>
+      <p>Already have an account? <a href="login">Sing in</a></p>
+    </header>
+    <form name="registration-form" action="/user-authentication/registration" method="POST">
       
-    <!-- User name input -->
-    <label for="user-name">User name</label><br>
-    <input type="text" id="user-name" value="" name="userName" class="registration-input">
-    <p id="user-name-error" style="color: red;"></p>
-    <br>
-    <!-- User email input -->
-    <label for="user-email">Email</label><br>
-    <input type="text" id="user-email" value="" name="userEmail" class="registration-input">
-    <p id="user-email-error" style="color: red;"></p>
-    <br>
-    <!-- User password input -->
-    <label for="user-pass">Password</label><br>
-    <input type="text" id="user-pass" value="" name="userPass" class="registration-input">
-    <p id="user-pass-error" style="color: red;"></p>
-    <br>
-    <!-- User password input -->  
-    <label for="user-rep-pass">Repeat password</label><br>
-    <input type="text" id="user-rep-pass" name="userRepPass" class="registration-input">
-    <p id="user-pass2-error" style="color: red;"></p>
-    <br>
-    <!-- privacy policy accept button -->
-    <input type="checkbox" id="privacy-policy" name="privacyPolicy" class="registration-input">
-    <label for="privacy-policy"> Zapoznałem(-am) sie i akceptuję </label>
-    <a href="regulamin.html" target="-blank">regulamin</a>
-    <div style="clear: both;"></div>
-    <br>
-    <input type="submit" id="form-submit-btn" name="formSubmitBtn" value="Utwórz konto" >
-
-  </form>
+      <!-- User name input -->
+      <label for="user-name">User name</label><br>
+      <input type="text" id="user-name" value="" name="userName" class="registration-input">
+      <p id="user-name-error" style="color: red;"></p>
+      <br>
+      <!-- User email input -->
+      <label for="user-email">Email</label><br>
+      <input type="text" id="user-email" value="" name="userEmail" class="registration-input">
+      <p id="user-email-error" style="color: red;"></p>
+      <br>
+      <!-- User password input -->
+      <label for="user-pass">Password</label><br>
+      <input type="text" id="user-pass" value="" name="userPass" class="registration-input">
+      <!-- <p id="user-pass-error" style="color: red;"></p> -->
+      <p><strong>Create a password that:</strong></p>
+      <ul id="password-requirements">
+        <li>contains at least 8 characters</li>
+        <li>contains both lower (a-z) and upper case letters (A-Z)</li>
+        <li>contains at least one number (0-9) or symbol (_!@#$%^&*()\-=+<>?)</li>
+        <li>does not contain your user name or email address</li>
+      </ul>
+      <br>
+      <!-- User password input -->  
+      <label for="user-rep-pass">Confirm password</label><br>
+      <input type="text" id="user-pass-2" name="userPass2" class="registration-input">
+      <p id="user-pass2-error" style="color: red;"></p>
+      <br>
+      <!-- privacy policy accept button -->
+      
+      <input type="submit" id="form-submit-btn" name="formSubmitBtn" value="Creat account" >
+  
+    </form>
+  </div>
 
 </body>
 </html>

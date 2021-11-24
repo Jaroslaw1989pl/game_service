@@ -1,6 +1,4 @@
-let isUserNameValid = true;
-
-// USER NAME INPUT
+// USER NAME VALIDATION
 const nameRegex = /[^\w]/;
 const userNameInput = document.getElementById('user-name');
 const userNameParagraph = document.getElementById('user-name-error');
@@ -13,7 +11,7 @@ const nameValidation = () => {
       userNameParagraph.textContent = '';
     } else if(nameRegex.test(userNameInput.value)) {
       throw 'Username can only contain Latin letters, numbers and underscore';
-    } else if (userNameInput.value.length < 4) {
+    } else if (userNameInput.value.length < 3) {
       throw 'Username should be at least 3 characters long';
     } else if(userNameInput.value.length > 24) {
       throw 'Username should not exceed 24 characters';
@@ -24,11 +22,9 @@ const nameValidation = () => {
           if(xhttp.readyState == 4) {
             if(xhttp.responseText == userNameInput.value) {
               console.log(xhttp.responseText);
-              isUserNameValid = false;
               // throw 'User name already in use';
               userNameParagraph.textContent = 'User name already in use';
             } else {
-              isUserNameValid = true;
               userNameParagraph.textContent = '';
             } 
           }
@@ -39,7 +35,6 @@ const nameValidation = () => {
       xhttp.send('userName=' + userNameInput.value);
     }
   } catch (error) {
-    isUserNameValid = false;
     userNameParagraph.textContent = error;
   }
 };
@@ -47,7 +42,7 @@ const nameValidation = () => {
 userNameInput.addEventListener('input', nameValidation);
 
 
-// USER EMAIL INPUT
+// USER EMAIL VALIDATION
 const emailRegex = /^([\w-]+\.{0,1})+[\w-]+@([\w-]+\.)+[\w-]{2,4}$/i;
 const userEmailInput = document.getElementById('user-email');
 const userEmailParagraph = document.getElementById('user-email-error');
@@ -66,10 +61,8 @@ const emailValidation = () => {
           if(xhttp.readyState == 4) {
             if(xhttp.responseText == userEmailInput.value) {
               console.log(xhttp.responseText);
-              isUserEmailValid = false;
               userEmailParagraph.textContent = 'The email address has already been used to create the account';
             } else {
-              isUserEmailValid = true;
               userEmailParagraph.textContent = '';
             } 
           }
@@ -79,7 +72,6 @@ const emailValidation = () => {
       xhttp.send();
     }
   } catch (error) {
-    isUserEmailValid = false;
     userEmailParagraph.textContent = error;
   }
 };
@@ -87,10 +79,14 @@ const emailValidation = () => {
 userEmailInput.addEventListener('input', emailValidation);
 
 
-// USER PASSWORD INPUT
-const passRegex = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+<>?])[\w!@#$%^&*()\-=+<>?]{8,}/;
+// USER PASSWORD VALIDATION
+// const passRegex = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+<>?])[\w!@#$%^&*()\-=+<>?]{8,}/;
+const passRegex = /(?=.*[A-Z])(?=.*[a-z])(?=.*([0-9]|[!@#$%^&*()\-_=+<>?]))[\w!@#$%^&*()\-=+<>?]{8,}/;
 const userPassInput = document.getElementById('user-pass');
 const userPassParagraph = document.getElementById('user-pass-error');
+
+const userPass2Input = document.getElementById('user-pass-2');
+const userPass2Paragraph = document.getElementById('user-pass2-error');
 
 const passValidation = () => {
 
@@ -108,9 +104,23 @@ const passValidation = () => {
       userPassParagraph.textContent = '';
     } 
   } catch (error) {
-    isUserPassValid = false;
     userPassParagraph.textContent = error;
   }
+
+  pass2Validation();
 };
 
 userPassInput.addEventListener('input', passValidation);
+
+
+const pass2Validation = () => {
+  if(userPass2Input.value.length > 0) {
+    if(userPassInput.value === userPass2Input.value) {
+      userPass2Paragraph.textContent = '';
+    } else {
+      userPass2Paragraph.textContent = 'Passwords are not the same';
+    }
+  }
+};
+
+userPass2Input.addEventListener('input', pass2Validation);
