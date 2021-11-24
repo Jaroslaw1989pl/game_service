@@ -2,8 +2,16 @@ body {
   background-color: #a9a9a9;
 }
 
-  #registration-form{
+  #registration-form {
     width: 300px;
     background-color: #ffffff;
     padding: 25px;
   }
+
+    #password-requirements {
+      display: none;
+    }
+
+      #requirements-list {
+        padding: 0;
+      }

@@ -50,6 +50,7 @@ const userEmailParagraph = document.getElementById('user-email-error');
 const emailValidation = () => {
 
   try {
+    
     if(userEmailInput.value == '') {
       userEmailParagraph.textContent = '';
     } else if(!emailRegex.test(userEmailInput.value)) {
@@ -61,7 +62,7 @@ const emailValidation = () => {
           if(xhttp.readyState == 4) {
             if(xhttp.responseText == userEmailInput.value) {
               console.log(xhttp.responseText);
-              userEmailParagraph.textContent = 'The email address has already been used to create the account';
+              userEmailParagraph.textContent = 'An account with this email address already exists';
             } else {
               userEmailParagraph.textContent = '';
             } 
@@ -83,35 +84,70 @@ userEmailInput.addEventListener('input', emailValidation);
 // const passRegex = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+<>?])[\w!@#$%^&*()\-=+<>?]{8,}/;
 const passRegex = /(?=.*[A-Z])(?=.*[a-z])(?=.*([0-9]|[!@#$%^&*()\-_=+<>?]))[\w!@#$%^&*()\-=+<>?]{8,}/;
 const userPassInput = document.getElementById('user-pass');
-const userPassParagraph = document.getElementById('user-pass-error');
+// const userPassParagraph = document.getElementById('user-pass-error');
+// password requirements list items
+const passRequirements = document.getElementById('password-requirements');
+const passLength = document.getElementById('password-length');
+const passLetters = document.getElementById('password-letters');
+const passSymbols = document.getElementById('password-symbols');
+const passUniqueness = document.getElementById('password-uniqueness');
 
-const userPass2Input = document.getElementById('user-pass-2');
-const userPass2Paragraph = document.getElementById('user-pass2-error');
+let isLengthValid, areLettersValid, areSymbolsValid, isUniquenessValid;
+
+const displayPassRequirements = () => {
+  if(userPassInput.value === '') {
+    passRequirements.style.display = 'none';
+  } else if(isLengthValid && areLettersValid && areSymbolsValid && isUniquenessValid) {
+    setTimeout(() => {passRequirements.style.display = 'none';}, 1000);
+  } else {
+    passRequirements.style.display = 'block';
+  }
+};
 
 const passValidation = () => {
-
-  try {
-    if(userPassInput.value == '') {
-      userPassParagraph.textContent = '';
-    } else if (userPassInput.value.length < 8) {
-      throw 'Password should be at least 8 characters long';
-    } else if(userPassInput.value.length > 24) {
-      throw 'Password should not exceed 24 characters';
-    } else if(passRegex.test(userPassInput.value)) {
-      throw 'hasło poprawne';
-      // throw 'Password should contain at least one capitol letter, one small letter, one number and one special character: !@#$%^&*()-_=+<>?';
-    } else {
-      userPassParagraph.textContent = '';
-    } 
-  } catch (error) {
-    userPassParagraph.textContent = error;
+  // length validation
+  if(userPassInput.value.length >= 8) {
+    passLength.style.color = 'green';
+    isLengthValid = true;
+  } else {
+    passLength.style.color = 'black';
+    isLengthValid = false;
+  }
+  // both lower and upper case validation
+  if(/(?=.*[A-Z])(?=.*[a-z])/.test(userPassInput.value)) {
+    passLetters.style.color = 'green';
+    areLettersValid = true;
+  } else {
+    passLetters.style.color = 'black';
+    areLettersValid = false;
+  }
+  // number and symbol validation
+  if(/(?=.*[0-9?=.*[!@#$%^&*()\-_=+<>?])/.test(userPassInput.value)) {
+    passSymbols.style.color = 'green';
+    areSymbolsValid = true;
+  } else {
+    passSymbols.style.color = 'black';
+    areSymbolsValid = false;
+  }
+  // uniqueness validation
+  if((!userPassInput.value.includes(userNameInput.value) || !userNameInput.value) && 
+     (!userPassInput.value.includes(userEmailInput.value) || !userEmailInput.value)) {
+    passUniqueness.style.color = 'green';
+    isUniquenessValid = true;
+  } else {
+    passUniqueness.style.color = 'black';
+    isUniquenessValid = false;
   }
 
+  displayPassRequirements();
   pass2Validation();
 };
 
 userPassInput.addEventListener('input', passValidation);
 
+
+const userPass2Input = document.getElementById('user-pass-2');
+const userPass2Paragraph = document.getElementById('user-pass2-error');
 
 const pass2Validation = () => {
   if(userPass2Input.value.length > 0) {

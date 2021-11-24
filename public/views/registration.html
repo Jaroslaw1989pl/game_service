@@ -37,13 +37,15 @@
       <label for="user-pass">Password</label><br>
       <input type="text" id="user-pass" value="" name="userPass" class="registration-input">
       <!-- <p id="user-pass-error" style="color: red;"></p> -->
-      <p><strong>Create a password that:</strong></p>
-      <ul id="password-requirements">
-        <li>contains at least 8 characters</li>
-        <li>contains both lower (a-z) and upper case letters (A-Z)</li>
-        <li>contains at least one number (0-9) or symbol (_!@#$%^&*()\-=+<>?)</li>
-        <li>does not contain your user name or email address</li>
-      </ul>
+      <section id="password-requirements">
+        <p><strong>Create a password that:</strong></p>
+        <ul id="requirements-list">
+          <li id="password-length">contains at least 8 characters</li>
+          <li id="password-letters">contains both lower (a-z) and upper case letters (A-Z)</li>
+          <li id="password-symbols">contains at least one number (0-9) or symbol (_!@#$%^&*()\-=+<>?)</li>
+          <li id="password-uniqueness">does not contain your user name or email address</li>
+        </ul>
+      </section>
       <br>
       <!-- User password input -->  
       <label for="user-rep-pass">Confirm password</label><br>
